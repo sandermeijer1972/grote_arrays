@@ -95,8 +95,8 @@ const getCCLaterThisYear = getCreditcardsExpireThisYear.filter(person => person.
 const getCCEarlyNextYear = getCreditcardsExpireNextYear.filter(person => person.credit_card.expiration.split("/")[0] <= month);
 console.log(getCCLaterThisYear);
 console.log(getCCEarlyNextYear);
-const getSortedCCThisYear = getCCLaterThisYear.sort((a, b) => (parseInt(a.credit_card.expiration.split("/")[0]) > parseInt(b.credit_card.expiration.split("/")[0])) ? 1 : -1);
-const getSortedCCNextYear = getCCEarlyNextYear.sort((a, b) => (parseInt(a.credit_card.expiration.split("/")[0]) > parseInt(b.credit_card.expiration.split("/")[0])) ? 1 : -1);
+const getSortedCCThisYear = getCCLaterThisYear.slice().sort((a, b) => (parseInt(a.credit_card.expiration.split("/")[0]) > parseInt(b.credit_card.expiration.split("/")[0])) ? 1 : -1);
+const getSortedCCNextYear = getCCEarlyNextYear.slice().sort((a, b) => (parseInt(a.credit_card.expiration.split("/")[0]) > parseInt(b.credit_card.expiration.split("/")[0])) ? 1 : -1);
 console.log(getSortedCCThisYear);
 console.log(getSortedCCNextYear);
 const creditcardsThatExpireWithinOneYear = getSortedCCThisYear.concat(getSortedCCNextYear);
