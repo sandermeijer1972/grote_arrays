@@ -1,0 +1,78 @@
+body {
+    background-color: #FFB366;
+    color: #331A00;
+    font-size: 20px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 10px;
+}
+
+button {
+    background-color: #663300;
+    color: #FF8000;
+    font-size: 30px;
+    padding: 5px 15px;
+}
+
+#uitleg {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 45px;
+    color: #804000;
+    text-decoration: underline;
+}
+
+.landenlijst {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 40px;
+    margin: 50px 75px;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 25px;
+}
+
+.steenbokvrouwen {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 25px;
+    margin: 50px 75px;
+    padding: 0;
+}
+
+.steenbokvrouwen li {
+    border: solid 3px #331A00;
+    border-radius: 10px;
+    background-color: #FF8000;
+    color: #663300;
+    text-align: center;
+    font-size: 25px;
+    width: 150px;
+    padding: 15px;
+}
+
+.steenbokvrouwen li p {
+    margin: 5px;
+    font-family: fantasy;
+}
+
+.steenbokvrouwen li img {
+    margin: 15px;
+}
+
+.work {
+    text-align: center;
+    padding: 100px 20px;
+}
