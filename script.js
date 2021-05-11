@@ -1,12 +1,15 @@
 const resultOfButtonClick = document.getElementById('results');
 const uitlegButton = document.getElementById('uitleg');
+const resultText = document.getElementById('text');
 const emptyResults = () => {
     uitlegButton.innerHTML = '';
     resultOfButtonClick.innerHTML = '';
     resultOfButtonClick.classList.remove("landenlijst");
     resultOfButtonClick.classList.remove("work");
     resultOfButtonClick.classList.remove("steenbokvrouwen");
-    resultOfButtonClick.classList.remove("creditcards")
+    resultOfButtonClick.classList.remove("creditcards");
+    resultOfButtonClick.classList.remove("gemiddelde");
+
 };
 
 const workInProgress = () => {
@@ -148,8 +151,41 @@ addOudeCreditcardsToDOM.addEventListener("click", addCreditcardsToDOM);
 const addMeesteMensenToDOM = document.getElementById('meestemensen');
 addMeesteMensenToDOM.addEventListener("click", workInProgress);
 
+
+//GEMIDDELDE LEEFTIJD
+
+const viewText = (country, age) => {    
+    resultText.innerText = ("De gemiddelde leeftijd van de mensen in " + country + " is " + age + " jaar")
+};
+
+const addCountryButtons = (array) => {
+    array.forEach(country => {
+        const newLi = document.createElement('li');
+        const newButton = document.createElement('button');
+        const peopleInOneCountry = randomPersonData.filter(person => person.region == country);
+        const agesOfPeopleInOneCountry = peopleInOneCountry.map(person => person.age);
+        console.log(agesOfPeopleInOneCountry);
+        const totalAge = agesOfPeopleInOneCountry.reduce((accumulator, currentValue) => accumulator + currentValue);
+        console.log(totalAge);
+        const totalPeopleInOneCountry = peopleInOneCountry.length;
+        const averageAge = Math.round(totalAge/totalPeopleInOneCountry);
+        console.log(averageAge);
+        newButton.innerText = (country);
+        newButton.addEventListener("click", viewText(country, averageAge));
+        newLi.appendChild(newButton);
+        resultOfButtonClick.appendChild(newLi);
+    });
+};
+
+const addButtonsToDOM = () => {
+    emptyResults();
+    uitlegButton.innerHTML = "De mensen uit de database wonen in deze landen. Klik op een button van een land om te zien wat van die personen de gemiddelde leeftijd is.";
+    resultOfButtonClick.classList.add("gemiddelde");
+    addCountryButtons(sortedCountries);
+}
+
 const addGemiddeldeLeeftijdToDOM = document.getElementById('gemiddeldeleeftijd');
-addGemiddeldeLeeftijdToDOM.addEventListener("click", workInProgress);
+addGemiddeldeLeeftijdToDOM.addEventListener("click", addButtonsToDOM);
 
 const addMatchMakingToDOM = document.getElementById('matchmaking');
 addMatchMakingToDOM.addEventListener("click", workInProgress);
