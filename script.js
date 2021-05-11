@@ -159,12 +159,9 @@ const addCountryButtons = (array) => {
         const newButton = document.createElement('button');
         const peopleInOneCountry = randomPersonData.filter(person => person.region == country);
         const agesOfPeopleInOneCountry = peopleInOneCountry.map(person => person.age);
-        console.log(agesOfPeopleInOneCountry);
         const totalAge = agesOfPeopleInOneCountry.reduce((accumulator, currentValue) => accumulator + currentValue);
-        console.log(totalAge);
         const totalPeopleInOneCountry = peopleInOneCountry.length;
         const averageAge = Math.round(totalAge/totalPeopleInOneCountry);
-        console.log(averageAge);
         newButton.innerText = (country);
         const viewText = (country, age) => {    
             uitlegButton.innerText = ("De gemiddelde leeftijd van de mensen in " + country + " is " + age + " jaar")
