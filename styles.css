@@ -128,6 +128,29 @@ button {
     font-family: sans-serif;
 }
 
+.gemiddelde {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: center;
+    padding: 30px;
+}
+
+.gemiddelde button {
+    background-color: #FF8C1A;
+    color: #331A00;
+    font-size: 23px;
+    font-family: monospace;
+    padding: 5px 15px;
+}
+
+.gemiddelde button:hover {
+    background-color: #FFE6CC;
+    color: #E67300;
+}
+
 @media (min-width: 800px) {
     .creditcards li {
         display: grid;

@@ -1,6 +1,5 @@
 const resultOfButtonClick = document.getElementById('results');
 const uitlegButton = document.getElementById('uitleg');
-const resultText = document.getElementById('text');
 const emptyResults = () => {
     uitlegButton.innerHTML = '';
     resultOfButtonClick.innerHTML = '';
@@ -25,7 +24,7 @@ const workInProgress = () => {
 
 const getCountries = randomPersonData.map(person => person.region);
 const allCountriesOnlyOnce = [...new Set(getCountries)];
-const sortedCountries = allCountriesOnlyOnce.sort();
+const sortedCountries = allCountriesOnlyOnce.slice().sort();
 console.log(sortedCountries);
 const addCountries = (array) => {
     array.forEach(country => {
@@ -154,10 +153,6 @@ addMeesteMensenToDOM.addEventListener("click", workInProgress);
 
 //GEMIDDELDE LEEFTIJD
 
-const viewText = (country, age) => {    
-    resultText.innerText = ("De gemiddelde leeftijd van de mensen in " + country + " is " + age + " jaar")
-};
-
 const addCountryButtons = (array) => {
     array.forEach(country => {
         const newLi = document.createElement('li');
@@ -171,7 +166,10 @@ const addCountryButtons = (array) => {
         const averageAge = Math.round(totalAge/totalPeopleInOneCountry);
         console.log(averageAge);
         newButton.innerText = (country);
-        newButton.addEventListener("click", viewText(country, averageAge));
+        const viewText = (country, age) => {    
+            uitlegButton.innerText = ("De gemiddelde leeftijd van de mensen in " + country + " is " + age + " jaar")
+        };
+        newButton.addEventListener("click", () => viewText(country, averageAge));
         newLi.appendChild(newButton);
         resultOfButtonClick.appendChild(newLi);
     });
@@ -181,7 +179,7 @@ const addButtonsToDOM = () => {
     emptyResults();
     uitlegButton.innerHTML = "De mensen uit de database wonen in deze landen. Klik op een button van een land om te zien wat van die personen de gemiddelde leeftijd is.";
     resultOfButtonClick.classList.add("gemiddelde");
-    addCountryButtons(sortedCountries);
+    addCountryButtons(allCountriesOnlyOnce);
 }
 
 const addGemiddeldeLeeftijdToDOM = document.getElementById('gemiddeldeleeftijd');
