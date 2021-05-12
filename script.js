@@ -147,6 +147,10 @@ const addOudeCreditcardsToDOM = document.getElementById('oudecreditcards');
 addOudeCreditcardsToDOM.addEventListener("click", addCreditcardsToDOM);
 
 
+//MEESTE MENSEN
+
+
+
 const addMeesteMensenToDOM = document.getElementById('meestemensen');
 addMeesteMensenToDOM.addEventListener("click", workInProgress);
 
