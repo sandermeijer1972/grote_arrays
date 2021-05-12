@@ -20,6 +20,11 @@ button {
     padding: 5px 15px;
 }
 
+button:hover {
+    background-color: #FF8000;
+    color: #663300;
+}
+
 #uitleg {
     text-align: center;
     margin-top: 50px;
