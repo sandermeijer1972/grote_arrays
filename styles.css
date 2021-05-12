@@ -85,7 +85,7 @@ button:hover {
 .creditcards {
     list-style-type: none;
     margin: 50px 40px;
-    padding: 0;    
+    padding: 0;
 }
 
 .creditcards li {
@@ -132,6 +132,36 @@ button:hover {
     font-size: 32px;
     font-family: sans-serif;
 }
+
+.meestemensen {
+    list-style-type: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 25px;
+    padding: 0;
+    margin: 40px;
+    background-color: #FF9933;
+}
+
+.meestemensen li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.top {
+    text-decoration: underline;
+}
+
+.meestemensen p {
+    margin: 5px;
+    text-align: right;
+}
+
+.meestemensen div {
+    margin: 5px;
+    text-align: left;
+}
+
+
 
 .gemiddelde {
     list-style-type: none;
