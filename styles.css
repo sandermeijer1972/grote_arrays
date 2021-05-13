@@ -149,6 +149,9 @@ button:hover {
 
 .top {
     text-decoration: underline;
+    text-transform: uppercase;
+    text-decoration-color: #804000;
+    text-decoration-style: double;
 }
 
 .meestemensen p {
@@ -157,11 +160,9 @@ button:hover {
 }
 
 .meestemensen div {
-    margin: 5px;
+    margin: 5px 15px;
     text-align: left;
 }
-
-
 
 .gemiddelde {
     list-style-type: none;
@@ -184,6 +185,70 @@ button:hover {
 .gemiddelde button:hover {
     background-color: #FFE6CC;
     color: #FF8C1A;
+}
+
+.matchmaking {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+    padding: 10px;
+}
+
+.matchmaking li {
+    background-color: #FFE6CC;    
+    color: #B35900;
+    border-radius: 15px;
+    width: 180px;
+    text-align: center;
+}
+
+.matchmaking li:hover {
+    background-color: #FF8000;
+    color: #331A00;
+}
+
+.matchmaking li p:nth-child(1) {
+    font-family: fantasy;
+    font-size: 23px;
+}
+
+.matchmaking li p:nth-child(2) {
+    font-family: fantasy;
+    font-size: 25px;
+}
+
+.matchmaking li img:nth-child(3) {
+    width: 120px;
+    border-radius: 10px;
+}
+
+.matchmaking li p:nth-child(4) {
+    font-family: sans-serif;
+    font-size: 32px;
+}
+
+.matchmaking li span {
+    font-size: 22px;
+    font-weight: lighter;
+}
+
+.matchmaking li p:nth-child(5) {
+    font-size: 26px;
+}
+
+.matchmaking li img:nth-child(6) {
+    height: 30px;
+}
+
+.matchmaking li p:nth-child(7) {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.matchmaking p {
+    margin: 5px;
 }
 
 @media (min-width: 800px) {

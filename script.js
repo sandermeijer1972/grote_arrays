@@ -9,6 +9,7 @@ const emptyResults = () => {
     resultOfButtonClick.classList.remove("creditcards");
     resultOfButtonClick.classList.remove("gemiddelde");
     resultOfButtonClick.classList.remove("meestemensen");
+    resultOfButtonClick.classList.remove("matchmaking");
 
 };
 
@@ -222,5 +223,85 @@ const addButtonsToDOM = () => {
 const addGemiddeldeLeeftijdToDOM = document.getElementById('gemiddeldeleeftijd');
 addGemiddeldeLeeftijdToDOM.addEventListener("click", addButtonsToDOM);
 
+
+//MATCHMAKING
+
+const checkSterrenbeeld = (month, day) => {
+    if((month == 1 && day <= 19) || (month == 12 && day >= 22)) {
+        return "steenbok";
+    } else if((month == 1 && day >= 20) || (month == 2 && day <= 19)) {
+        return "waterman";
+    } else if((month == 2 && day >= 20) || (month == 3 && day <= 20)) {
+        return "vissen";    
+    } else if((month == 3 && day >= 21) || (month == 4 && day <= 20)) {
+        return "ram";
+    } else if((month == 4 && day >= 21) || (month == 5 && day <= 20)) {
+        return "stier";
+    } else if((month == 5 && day >= 21) || (month == 6 && day <= 21)) {
+        return "tweeling";
+    } else if((month == 6 && day >= 22) || (month == 7 && day <= 22)) {
+        return "kreeft";
+    } else if((month == 7 && day >= 23) || (month == 8 && day <= 23)) {
+        return "leeuw";
+    } else if((month == 8 && day >= 24) || (month == 9 && day <= 23)) {
+        return "maagd";
+     } else if((month == 9 && day >= 24) || (month == 10 && day <= 23)) {
+        return "weegschaal";
+    } else if((month == 10 && day >= 24) || (month == 11 && day <= 22)) {
+        return "schorpioen";
+    } else if((month == 11 && day >= 23) || (month == 12 && day <= 21)) {
+        return "boogschutter";
+     }
+};
+
+const addSterrenbeelden = () => {
+    randomPersonData.forEach(person => {
+        const month = parseInt(person.birthday.dmy.split("/")[1]);
+        const day = parseInt(person.birthday.dmy.split("/")[0]);
+        person.sterrenbeeld = checkSterrenbeeld(month,day);
+    });
+};
+addSterrenbeelden();
+const sortedOnName = randomPersonData.slice().sort((a, b) => (a.name > b.name) ? 1 : -1);
+console.log(sortedOnName);
+
+const addAllPeople = (array) => {
+    array.forEach(person => {
+        const newLi = document.createElement('li');
+        const newPName = document.createElement('p');
+        newPName.innerText = person.name;
+        const newPSurname = document.createElement('p');
+        newPSurname.innerText = person.surname;
+        const newPhoto = document.createElement('img');
+        newPhoto.src = person.photo;
+        const newPAge = document.createElement('p');
+        newPAge.innerText = person.age;
+        const newSpan = document.createElement('span');
+        newSpan.innerText = " jaar";
+        const newPRegion = document.createElement('p');
+        newPRegion.innerText = person.region;
+        const newImg = document.createElement('img');
+        newImg.src = ("./sterrenbeelden/" + person.sterrenbeeld + ".png")
+        const newPSter = document.createElement('p');
+        newPSter.innerText = person.sterrenbeeld;
+        newPAge.appendChild(newSpan);
+        newLi.appendChild(newPName);
+        newLi.appendChild(newPSurname);
+        newLi.appendChild(newPhoto);
+        newLi.appendChild(newPAge);
+        newLi.appendChild(newPRegion);
+        newLi.appendChild(newImg);
+        newLi.appendChild(newPSter);
+        resultOfButtonClick.appendChild(newLi);
+    });
+};
+
+const addListToDOM = () => {
+    emptyResults();
+    uitlegButton.innerHTML = "Hieronder staan alle mensen uit de database. Klik op 1 van de personen om te zien met wie ze het beste matchen.";
+    resultOfButtonClick.classList.add("matchmaking");
+    addAllPeople(sortedOnName);
+};
+
 const addMatchMakingToDOM = document.getElementById('matchmaking');
-addMatchMakingToDOM.addEventListener("click", workInProgress);
+addMatchMakingToDOM.addEventListener("click", addListToDOM);
