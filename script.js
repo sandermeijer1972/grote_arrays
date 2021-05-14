@@ -228,29 +228,29 @@ addGemiddeldeLeeftijdToDOM.addEventListener("click", addButtonsToDOM);
 
 const checkSterrenbeeld = (month, day) => {
     if((month == 1 && day <= 19) || (month == 12 && day >= 22)) {
-        return "steenbok";
+        return "Steenbok";
     } else if((month == 1 && day >= 20) || (month == 2 && day <= 19)) {
-        return "waterman";
+        return "Waterman";
     } else if((month == 2 && day >= 20) || (month == 3 && day <= 20)) {
-        return "vissen";    
+        return "Vissen";    
     } else if((month == 3 && day >= 21) || (month == 4 && day <= 20)) {
-        return "ram";
+        return "Ram";
     } else if((month == 4 && day >= 21) || (month == 5 && day <= 20)) {
-        return "stier";
+        return "Stier";
     } else if((month == 5 && day >= 21) || (month == 6 && day <= 21)) {
-        return "tweeling";
+        return "Tweeling";
     } else if((month == 6 && day >= 22) || (month == 7 && day <= 22)) {
-        return "kreeft";
+        return "Kreeft";
     } else if((month == 7 && day >= 23) || (month == 8 && day <= 23)) {
-        return "leeuw";
+        return "Leeuw";
     } else if((month == 8 && day >= 24) || (month == 9 && day <= 23)) {
-        return "maagd";
+        return "Maagd";
      } else if((month == 9 && day >= 24) || (month == 10 && day <= 23)) {
-        return "weegschaal";
+        return "Weegschaal";
     } else if((month == 10 && day >= 24) || (month == 11 && day <= 22)) {
-        return "schorpioen";
+        return "Schorpioen";
     } else if((month == 11 && day >= 23) || (month == 12 && day <= 21)) {
-        return "boogschutter";
+        return "Boogschutter";
      }
 };
 
@@ -262,8 +262,22 @@ const addSterrenbeelden = () => {
     });
 };
 addSterrenbeelden();
+
 const sortedOnName = randomPersonData.slice().sort((a, b) => (a.name > b.name) ? 1 : -1);
 console.log(sortedOnName);
+
+const matchesForSteenbok = sortedOnName.filter(person => (person.sterrenbeeld == "Stier" || person.sterrenbeeld == "Leeuw" || person.sterrenbeeld == "Schorpioen" || person.sterrenbeeld == "Maagd"));
+const matchesForWaterman = sortedOnName.filter(person => (person.sterrenbeeld == "Tweeling" || person.sterrenbeeld == "Weegschaal" || person.sterrenbeeld == "Boogschutter"));
+const matchesForVissen = sortedOnName.filter(person => (person.sterrenbeeld == "Stier" || person.sterrenbeeld == "Kreeft" || person.sterrenbeeld == "Schorpioen" || person.sterrenbeeld == "Maagd"));
+const matchesForRam = sortedOnName.filter(person => (person.sterrenbeeld == "Weegschaal" || person.sterrenbeeld == "Schorpioen"));
+const matchesForStier = sortedOnName.filter(person => (person.sterrenbeeld == "Vissen" || person.sterrenbeeld == "Steenbok" || person.sterrenbeeld == "Maagd"));
+const matchesForTweeling = sortedOnName.filter(person => (person.sterrenbeeld == "Weegschaal" || person.sterrenbeeld == "Boogschutter" || person.sterrenbeeld == "Waterman"));
+const matchesForKreeft = sortedOnName.filter(person => (person.sterrenbeeld == "Vissen" || person.sterrenbeeld == "Schorpioen"));
+const matchesForLeeuw = sortedOnName.filter(person => (person.sterrenbeeld == "Leeuw" || person.sterrenbeeld == "Schorpioen" || person.sterrenbeeld == "Steenbok"));
+const matchesForMaagd = sortedOnName.filter(person => (person.sterrenbeeld == "Stier" || person.sterrenbeeld == "Vissen" || person.sterrenbeeld == "Steenbok"));
+const matchesForWeegschaal = sortedOnName.filter(person => (person.sterrenbeeld == "Ram" || person.sterrenbeeld == "Tweeling" || person.sterrenbeeld == "Waterman"));
+const matchesForSchorpioen = sortedOnName.filter(person => (person.sterrenbeeld == "Ram" || person.sterrenbeeld == "Leeuw" || person.sterrenbeeld == "Vissen" || person.sterrenbeeld == "Steenbok" || person.sterrenbeeld == "Kreeft"));
+const matchesForBoogschutter = sortedOnName.filter(person => (person.sterrenbeeld == "Tweeling" || person.sterrenbeeld == "Waterman"));
 
 const addAllPeople = (array) => {
     array.forEach(person => {
@@ -292,16 +306,27 @@ const addAllPeople = (array) => {
         newLi.appendChild(newPRegion);
         newLi.appendChild(newImg);
         newLi.appendChild(newPSter);
+        const findMatches = (sterrenbeeld) => {
+            const selectedPerson = [];
+            selectedPerson.push(person);
+            console.log(selectedPerson);
+            const getMatches = ("matchesFor" + sterrenbeeld);
+            console.log(getMatches);
+            selectedPerson.concat(getMatches);
+            console.log(selectedPerson);
+            addListToDOM(selectedPerson);
+        };
+        newLi.addEventListener("click", () => findMatches(person.sterrenbeeld));
         resultOfButtonClick.appendChild(newLi);
     });
 };
 
-const addListToDOM = () => {
+const addListToDOM = (array) => {
     emptyResults();
     uitlegButton.innerHTML = "Hieronder staan alle mensen uit de database. Klik op 1 van de personen om te zien met wie ze het beste matchen.";
     resultOfButtonClick.classList.add("matchmaking");
-    addAllPeople(sortedOnName);
+    addAllPeople(array);
 };
 
 const addMatchMakingToDOM = document.getElementById('matchmaking');
-addMatchMakingToDOM.addEventListener("click", addListToDOM);
+addMatchMakingToDOM.addEventListener("click", () => addListToDOM(sortedOnName));
