@@ -10,6 +10,7 @@ const emptyResults = () => {
     resultOfButtonClick.classList.remove("gemiddelde");
     resultOfButtonClick.classList.remove("meestemensen");
     resultOfButtonClick.classList.remove("matchmaking");
+    resultOfButtonClick.classList.remove("matchendemensen");
 
 };
 
@@ -38,7 +39,7 @@ const addCountries = (array) => {
 
 const addCountriesToDOM = () => {
     emptyResults();
-    uitlegButton.innerHTML = "De mensen in de Database wonen in deze landen:";
+    uitlegButton.innerText = "De mensen in de Database wonen in deze landen:";
     resultOfButtonClick.classList.add("landenlijst");
     addCountries(sortedCountries);
 };
@@ -76,7 +77,7 @@ const addSteenbokVrouwen = (array) => {
 
 const addSteenbokVrouwenToDOM = () => {
     emptyResults();
-    uitlegButton.innerHTML = "Dit zijn vrouwen van boven de 30 met Steenbok als sterrenbeeld:";
+    uitlegButton.innerText = "Dit zijn vrouwen van boven de 30 met Steenbok als sterrenbeeld:";
     resultOfButtonClick.classList.add("steenbokvrouwen");
     addSteenbokVrouwen(sortedSteenbokWomen);
 };
@@ -140,7 +141,7 @@ const addCreditCards = (array) => {
 
 const addCreditcardsToDOM = () => {
     emptyResults();
-    uitlegButton.innerHTML = "Van deze personen is de creditcard binnen een jaar aan vervanging toe:";
+    uitlegButton.innerText = "Van deze personen is de creditcard binnen een jaar aan vervanging toe:";
     resultOfButtonClick.classList.add("creditcards");
     addCreditCards(creditcardsThatExpireWithinOneYear);
 };
@@ -183,7 +184,7 @@ const addListOfMostPeople = (array) => {
 
 const addMostPeopleToDOM = () => {
     emptyResults();
-    uitlegButton.innerHTML = "Het aantal mensen uit de database per land gesorteerd:";
+    uitlegButton.innerText = "Het aantal mensen uit de database per land gesorteerd:";
     resultOfButtonClick.classList.add("meestemensen");
     addListOfMostPeople(countriesSortedOnCount);
 };
@@ -215,7 +216,7 @@ const addCountryButtons = (array) => {
 
 const addButtonsToDOM = () => {
     emptyResults();
-    uitlegButton.innerHTML = "De mensen uit de database wonen in deze landen. Klik op een button van een land om te zien wat van die personen de gemiddelde leeftijd is.";
+    uitlegButton.innerText = "De mensen uit de database wonen in deze landen. Klik op een button van een land om te zien wat van die personen de gemiddelde leeftijd is.";
     resultOfButtonClick.classList.add("gemiddelde");
     addCountryButtons(allCountriesOnlyOnce);
 }
@@ -347,7 +348,7 @@ const addAllPeople = (array) => {
         const newPRegion = document.createElement('p');
         newPRegion.innerText = person.region;
         const newImg = document.createElement('img');
-        newImg.src = ("./sterrenbeelden/" + person.sterrenbeeld + ".png")
+        newImg.src = ("./sterrenbeelden/" + person.sterrenbeeld + ".png");
         const newPSter = document.createElement('p');
         newPSter.innerText = person.sterrenbeeld;
         newPAge.appendChild(newSpan);
@@ -364,7 +365,7 @@ const addAllPeople = (array) => {
             console.log(selectedPerson);
             const arrayDieIkWil = useRightArray(sterrenbeeld, selectedPerson);
             console.log(arrayDieIkWil);
-            addListToDOM(arrayDieIkWil);
+            addMatchingPeopleToDOM(arrayDieIkWil);
         };
         newLi.addEventListener("click", () => findMatches(person.sterrenbeeld));
         resultOfButtonClick.appendChild(newLi);
@@ -373,9 +374,56 @@ const addAllPeople = (array) => {
 
 const addListToDOM = (array) => {
     emptyResults();
-    uitlegButton.innerHTML = "Hieronder staan alle mensen uit de database. Klik op 1 van de personen om te zien met wie ze het beste matchen.";
+    uitlegButton.innerText = "Hieronder staan alle mensen uit de database. Klik op 1 van de personen om te zien met wie ze het beste matchen.";
     resultOfButtonClick.classList.add("matchmaking");
     addAllPeople(array);
+};
+
+const addSpecificPerson = (array) => {
+    for (i = 0; i < 1; i++) {
+        const newLi = document.createElement('li');
+        const newPhoto = document.createElement('img');
+        newPhoto.src = array[i].photo;
+        const newPFullName = document.createElement('p');
+        newPFullName.innerText = (array[i].name + " " + array[i].surname);
+        const newPEmail = document.createElement('p');
+        const newImgEmail = document.createElement('img');
+        newImgEmail.src = "email.png";
+        const newPAdres = document.createElement('p');
+        newPAdres.innerText = array[i].email;
+        newPEmail.appendChild(newImgEmail);
+        newPEmail.appendChild(newPAdres);
+        const newPAge = document.createElement('p');
+        newPAge.innerText = array[i].age;
+        const newSpan = document.createElement('span');
+        newSpan.innerText = " jaar";
+        newPAge.appendChild(newSpan);
+        const newPSterrenbeeld = document.createElement('p');
+        newPSterrenbeeld.innerText = array[i].sterrenbeeld;
+        const newImgSter = document.createElement('img');
+        newImgSter.src = ("./sterrenbeelden/" + array[i].sterrenbeeld + ".png");
+        newLi.appendChild(newPhoto);
+        newLi.appendChild(newPFullName);
+        newLi.appendChild(newPEmail);
+        newLi.appendChild(newPAge);
+        newLi.appendChild(newPSterrenbeeld);
+        newLi.appendChild(newImgSter);
+        resultOfButtonClick.appendChild(newLi);
+    };    
+};
+
+const removeSecondLi = () => {
+    const secondLi = resultOfButtonClick.getElementsByTagName("li")[1];        
+    resultOfButtonClick.removeChild(secondLi);
+}
+
+const addMatchingPeopleToDOM = (array) => {
+    emptyResults();
+    uitlegButton.innerText = "Deze persoon heeft astrologisch gezien een zeer goede klik met de mensen daaronder";
+    resultOfButtonClick.classList.add("matchendemensen");
+    addSpecificPerson(array);
+    addAllPeople(array);
+    removeSecondLi();
 };
 
 const addMatchMakingToDOM = document.getElementById('matchmaking');
