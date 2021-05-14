@@ -279,6 +279,58 @@ const matchesForWeegschaal = sortedOnName.filter(person => (person.sterrenbeeld 
 const matchesForSchorpioen = sortedOnName.filter(person => (person.sterrenbeeld == "Ram" || person.sterrenbeeld == "Leeuw" || person.sterrenbeeld == "Vissen" || person.sterrenbeeld == "Steenbok" || person.sterrenbeeld == "Kreeft"));
 const matchesForBoogschutter = sortedOnName.filter(person => (person.sterrenbeeld == "Tweeling" || person.sterrenbeeld == "Waterman"));
 
+const useRightArray = (sterrenbeeld, array) => {
+    if (sterrenbeeld == "Steenbok") {
+        const rightArray = array.concat(matchesForSteenbok);
+        console.log(rightArray);
+        return rightArray;
+    } else if (sterrenbeeld == "Waterman") {
+        const rightArray = array.concat(matchesForWaterman);
+        console.log(rightArray);
+        return rightArray;
+    } else if (sterrenbeeld == "Vissen") {
+        const rightArray = array.concat(matchesForVissen);
+        console.log(rightArray);
+        return rightArray;
+    } else if (sterrenbeeld == "Ram") {
+        const rightArray = array.concat(matchesForRam);
+        console.log(rightArray);
+        return rightArray;
+    } else if (sterrenbeeld == "Stier") {
+        const rightArray = array.concat(matchesForStier);
+        console.log(rightArray);
+        return rightArray;
+    } else if (sterrenbeeld == "Tweeling") {
+        const rightArray = array.concat(matchesForTweeling);
+        console.log(rightArray);
+        return rightArray;
+    } else if(sterrenbeeld == "Kreeft") {
+        const rightArray = array.concat(matchesForKreeft);
+        console.log(rightArray);
+        return rightArray;
+    } else if (sterrenbeeld == "Leeuw") {
+        const rightArray = array.concat(matchesForLeeuw);
+        console.log(rightArray);
+        return rightArray;
+    } else if (sterrenbeeld == "Maagd") {
+        const rightArray = array.concat(matchesForMaagd);
+        console.log(rightArray);
+        return rightArray;
+    } else if  (sterrenbeeld == "Weegschaal") {
+        const rightArray = array.concat(matchesForWeegschaal);
+        console.log(rightArray);
+        return rightArray;
+    } else if (sterrenbeeld == "Schorpioen") {
+        const rightArray = array.concat(matchesForSchorpioen);
+        console.log(rightArray);
+        return rightArray;
+    } else if (sterrenbeeld == "Boogschutter") {
+        const rightArray = array.concat(matchesForBoogschutter);
+        console.log(rightArray);
+        return rightArray;
+    }
+};
+
 const addAllPeople = (array) => {
     array.forEach(person => {
         const newLi = document.createElement('li');
@@ -310,11 +362,9 @@ const addAllPeople = (array) => {
             const selectedPerson = [];
             selectedPerson.push(person);
             console.log(selectedPerson);
-            const getMatches = ("matchesFor" + sterrenbeeld);
-            console.log(getMatches);
-            selectedPerson.concat(getMatches);
-            console.log(selectedPerson);
-            addListToDOM(selectedPerson);
+            const arrayDieIkWil = useRightArray(sterrenbeeld, selectedPerson);
+            console.log(arrayDieIkWil);
+            addListToDOM(arrayDieIkWil);
         };
         newLi.addEventListener("click", () => findMatches(person.sterrenbeeld));
         resultOfButtonClick.appendChild(newLi);
