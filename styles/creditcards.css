@@ -1,0 +1,93 @@
+.creditcards {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 40px;
+    padding: 0;
+}
+
+.creditcards li {
+    padding: 10px;
+    background-color: #FFE6CC;
+    width: 85vw;
+    max-width: 1000px;
+}
+
+.creditcards li:nth-child(odd) {
+    background-color: #FF9933;
+}
+
+.naam {
+    font-size: 30px;
+}
+
+.tel-nr {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: flex-start;
+    font-size: 35px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.cc {
+    text-decoration: underline;
+    padding-top: 10px;
+}
+
+.cc-nr {
+    font-size: 25px;
+}
+
+.cc-exp {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.verloop {
+    font-size: 32px;
+    font-family: sans-serif;
+}
+
+@media (min-width: 850px) {
+    .creditcards li {
+        display: grid;
+        grid-template: 1fr 1fr 1fr / 1fr 1fr;
+        grid-template-areas: 
+        "nm tf"
+        "cc ."
+        "nr ex";
+    }
+    
+    .naam {
+        grid-area: nm;
+        text-align: left;
+        align-self: flex-end;
+    }
+    
+    .tel-nr {
+        grid-area: tf;        
+    }
+    
+    .cc {
+        grid-area: cc;
+        text-align: left;
+        align-self: flex-end;        
+    }
+    
+    .cc-nr {
+        grid-area: nr;
+        text-align: left;
+        align-self: flex-end;        
+    }
+    
+    .cc-exp {
+        grid-area: ex;
+        text-align: left;        
+    }
+    
+}

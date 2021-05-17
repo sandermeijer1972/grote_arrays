@@ -1,0 +1,181 @@
+.steenbokvrouwen {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 25px;
+    margin: 50px 75px;
+    padding: 0;
+}
+
+.steenbokvrouwen li {
+    border: solid 3px #331A00;
+    border-radius: 10px;
+    background-color: #FF8000;
+    color: #663300;
+    text-align: center;
+    font-size: 25px;
+    width: 150px;
+    padding: 15px;
+}
+
+.steenbokvrouwen li p {
+    margin: 5px;
+    font-family: fantasy;
+}
+
+.steenbokvrouwen li img {
+    margin: 15px;
+}
+.matchmaking,
+.matchendemensen {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+    padding: 10px;
+}
+
+.matchmaking li,
+.matchendemensen li {
+    background-color: #FFE6CC;    
+    color: #B35900;
+    border-radius: 15px;
+    width: 180px;
+    text-align: center;
+}
+
+.matchmaking li:hover,
+.matchendemensen li:hover {
+    background-color: #FF8000;
+    color: #331A00;
+}
+
+.matchmaking li p:nth-child(1),
+.matchendemensen li p:nth-child(1) {
+    font-family: fantasy;
+    font-size: 23px;
+}
+
+.matchmaking li p:nth-child(2),
+.matchendemensen li p:nth-child(2) {
+    font-family: fantasy;
+    font-size: 25px;
+}
+
+.matchmaking li img:nth-child(3),
+.matchendemensen li img:nth-child(3) {
+    width: 120px;
+    border-radius: 10px;
+}
+
+.matchmaking li p:nth-child(4),
+.matchendemensen li p:nth-child(4) {
+    font-family: sans-serif;
+    font-size: 32px;
+}
+
+.matchmaking li span,
+.matchendemensen li span {
+    font-size: 22px;
+    font-weight: lighter;
+}
+
+.matchmaking li p:nth-child(5),
+.matchendemensen li p:nth-child(5) {
+    font-size: 26px;
+}
+
+.matchmaking li img:nth-child(6),
+.matchendemensen li img:nth-child(6) {
+    height: 30px;
+}
+
+.matchmaking li p:nth-child(7),
+.matchendemensen li p:nth-child(7) {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.matchmaking p,
+.matchendemensen p {
+    margin: 5px;
+}
+
+#geselecteerdpersoon {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: #804000;
+    color: #FFE6CC;
+    width: 85vw;
+}
+
+.foto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foto img {
+    margin: 10px;
+    border-radius: 10px;
+    width: 150px;
+}
+
+.gegevens {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+
+#geselecteerdpersoon .gegevens p:nth-child(1) {
+    font-family: fantasy;
+    font-size: 25px;
+}
+
+#geselecteerdpersoon .gegevens p:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+}
+
+.gegevens img {
+    width: 40px;
+}
+
+#geselecteerdpersoon .gegevens p:nth-child(3) {
+    font-family: sans-serif;
+    font-size: 32px;
+}
+
+.gegevens span {
+    font-size: 22px;
+    font-weight: lighter;
+}
+
+#geselecteerdpersoon .gegevens p:nth-child(4) {
+    font-size: 26px;
+}
+
+.sterrenbeeld {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.sterrenbeeld img {
+    height: 100px;
+}
+
+#geselecteerdpersoon .sterrenbeeld p {
+    font-family: 'Courier New', Courier, monospace;
+}
+
